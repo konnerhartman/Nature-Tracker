@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Doggie",
+      "description": "",
+      "category_id": 1,
+      "location": "some place in the DFW"
+    },
+    {
+      "name": "Fishy",
+      "description": "",
+      "category_id": 2,
+      "location": "some place in the DFW"
+    },
+    {
+      "name": "Doggie",
+      "description": "",
+      "category_id": 3,
+      "location": "some place in the DFW"
+    },
+    {
+        "name": "Fishy",
+        "description": "",
+        "category_id": 3,
+        "location": "some place in the DFW"
+    }
+  ]
