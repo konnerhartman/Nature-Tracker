@@ -1,5 +1,47 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Animal } = require('../../models');
+
+// get all users
+router.get('/', async (req, res) => {
+  // find all users
+  // be sure to include its associated Category and Tag data
+  try {
+    const userData = await User.findAll( 
+      {
+        attributes: { exclude: ['password'] },
+        order: [['name', 'ASC']],
+      });
+
+      res.status(200).json(userData);
+  } catch (err) {
+      res.status(500).json(err);
+    }
+});
+
+// get one user
+router.get('/:id', async (req, res) => {
+  // find a single user by its `id`
+  // be sure to include its associated Category data
+  try {
+    const userData = await User.findByPk(req.params.id, 
+      {
+        attributes: { exclude: ['password'] },
+        order: [['name', 'ASC']],
+        include: [
+        { model: Animal, attridutes: ['id','name']},
+      ]
+    });
+
+    if (!userData) {
+      res.status(404).json({ message: 'No user found with this id!' });
+      return;
+    }
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
