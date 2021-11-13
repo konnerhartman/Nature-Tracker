@@ -4,7 +4,6 @@ const { User, Animal } = require('../../models');
 // get all users
 router.get('/', async (req, res) => {
   // find all users
-  // be sure to include its associated Category and Tag data
   try {
     const userData = await User.findAll( 
       {
@@ -21,7 +20,6 @@ router.get('/', async (req, res) => {
 // get one user
 router.get('/:id', async (req, res) => {
   // find a single user by its `id`
-  // be sure to include its associated Category data
   try {
     const userData = await User.findByPk(req.params.id, 
       {

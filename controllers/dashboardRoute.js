@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+const { Animal, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Use withAuth middleware to prevent access to route
@@ -28,7 +28,7 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
   
-router.get('/:id', withAuth, async (req, res) => {
+router.get('userData/:id', withAuth, async (req, res) => {
     try {
       const animalData = await Animal.findByPk(req.params.id, {
         include: [

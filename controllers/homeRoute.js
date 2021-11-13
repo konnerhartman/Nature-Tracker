@@ -26,7 +26,17 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('login');
+});
+
+router.get('/animal/:id', async (req, res) => {
   try {
     const animalData = await Animal.findByPk(req.params.id, {
       include: [
@@ -39,7 +49,7 @@ router.get('/:id', async (req, res) => {
 
     const animal = animalData.get({ plain: true });
 
-    res.render('animal', {
+    res.render('homepage', {
       ...animal,
       logged_in: req.session.logged_in
     });
@@ -48,14 +58,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
-  }
 
-  res.render('login');
-});
 
 module.exports = router;
