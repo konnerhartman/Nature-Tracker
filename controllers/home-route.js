@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Animal, User } = require('../models');
-const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
@@ -27,7 +26,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/animal/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const animalData = await Animal.findByPk(req.params.id, {
       include: [
@@ -43,26 +42,6 @@ router.get('/animal/:id', async (req, res) => {
     res.render('animal', {
       ...animal,
       logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Animal }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('profile', {
-      ...user,
-      logged_in: true
     });
   } catch (err) {
     res.status(500).json(err);
