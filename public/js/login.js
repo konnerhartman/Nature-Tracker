@@ -9,7 +9,7 @@ const loginFormHandler = async (event) => {
       // Send a POST request to the API endpoint
       const response = await fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ name, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
@@ -45,10 +45,10 @@ const loginFormHandler = async (event) => {
   };
   
   document
-    .querySelector('.login-form')
+    .querySelector('.form-signin')
     .addEventListener('submit', loginFormHandler);
   
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
+  // document
+  //   .querySelector('.signup-form')
+  //   .addEventListener('submit', signupFormHandler);
   
