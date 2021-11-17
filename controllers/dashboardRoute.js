@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Animal, User } = require('../models');
+const { Animal, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Use withAuth middleware to prevent access to route
@@ -7,10 +7,20 @@ router.get('/', withAuth, async (req, res) => {
     try {
       // Get all posts and JOIN with user/comment data
       const animalData = await Animal.findAll({
+        where: {
+          user_id: req.session.user_id
+        },
+        attributes: [
+          'id',
+          'name',
+          'description',
+          'location',
+          'date_created'
+        ],
         include: [
           {
-            model: User,
-            attributes: ['name'],
+            model: Category,
+            attributes: ['category_name'],
           },
         ],
       });
@@ -28,26 +38,38 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
   
-router.get('userData/:id', withAuth, async (req, res) => {
+router.get('edit/:id', withAuth, async (req, res) => {
     try {
-      const animalData = await Animal.findByPk(req.params.id, {
+      const animalData = await Animal.findByPk({
+        where: {
+          user_id: req.session.user_id
+        },
+        attributes: [
+          'id',
+          'name',
+          'description',
+          'location',
+          'date_created'
+        ],
         include: [
           {
-            model: User,
-            attributes: ['name'],
+            model: Category,
+            attributes: ['category_name'],
           },
         ],
       });
+    
+      // Serialize data so the template can read it
+      const animals = animalData.map((animal) => animal.get({ plain: true }));
   
-      const animal = animalData.get({ plain: true });
-  
-      res.render('animal', {
-        ...animal,
-        logged_in: req.session.logged_in
+      // Pass serialized data and session flag into template
+      res.render('editAnimal', { 
+        animals, 
+        logged_in: req.session.logged_in 
       });
     } catch (err) {
       res.status(500).json(err);
     }
 });
-  
+
 module.exports = router;

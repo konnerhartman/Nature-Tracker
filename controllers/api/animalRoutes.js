@@ -1,19 +1,34 @@
 const router = require('express').Router();
-const { Animal, Category } = require('../../models');
+const { Animal, User, Category } = require('../../models');
 
 // The `/api/animals` endpoint
-
 // get all animals
 router.get('/', async (req, res) => {
   // find all animals
   // be sure to include its associated Category and Tag data
   try {
     const animalData = await Animal.findAll(req.params.id, {
+      attributes: [
+        'id',
+        'name',
+        'description',
+        'location',
+        'date_created'
+      ],
+      order: [
+        ['created_at', 'DESC']
+      ],
       include: [
-        { model: Category, attridutes: ['id','category_name']},
-      ]
+        {
+          model: User,
+          attributes: ['name']
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
+      ],
     });
-
     res.status(200).json(animalData);
   } catch (err) {
     res.status(500).json(err);
@@ -26,10 +41,23 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Category data
   try {
     const animalData = await Animal.findByPk(req.params.id, {
-      // JOIN with Animals, using the Trip through table
+      attributes: [
+        'id',
+        'name',
+        'description',
+        'location',
+        'date_created'
+      ],
       include: [
-        { model: Category, attridutes: ['id','category_name']},
-      ]
+        {
+          model: User,
+          attributes: ['name']
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
+      ],
     });
 
     if (!animalData) {
@@ -49,8 +77,8 @@ router.post('/', (req, res) => {
     name: req.body.name,
     description: req.body.description,
     location: req.body.location,
-    comment: req.body.comment,
-    category_id: req.body.category_id
+    category_id: req.body.category_id,
+    user_id: req.body.user_id
   })
   
     .catch((err) => {
@@ -62,7 +90,11 @@ router.post('/', (req, res) => {
 // update animal
 router.put('/:id', (req, res) => {
   // update animal data
-  Animal.update(req.body, {
+  Animal.update({
+    name: req.body.name,
+    description: req.body.description,
+  },
+  {
     where: {
       id: req.params.id,
     },
