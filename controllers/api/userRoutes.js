@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Animal } = require('../../models');
+const { User, Animal, Category } = require('../../models');
 
 // get all users
 router.get('/', async (req, res) => {
@@ -26,8 +26,20 @@ router.get('/:id', async (req, res) => {
         attributes: { exclude: ['password'] },
         order: [['name', 'ASC']],
         include: [
-        { model: Animal, attridutes: ['id','name']},
-      ]
+          { model: Animal, 
+            attridutes: [
+              'id',
+              'name',
+              'description',
+              'location',
+              'date_created'
+            ]
+          },
+          {
+            model: Category,
+            attributes: ['category_name']
+          },
+        ]
     });
 
     if (!userData) {
@@ -43,7 +55,10 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      name: req.body.name,
+      password: req.body.password
+    });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -59,7 +74,6 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { name: req.body.name } });
-    console.log = userData;
 
     if (!userData) {
       res

@@ -1,14 +1,25 @@
 const router = require('express').Router();
-const { Animal, User } = require('../models');
+const { Animal, User, Category } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
     // Get all animals and JOIN with user data
     const animalData = await Animal.findAll({
+      attributes: [
+        'id',
+        'name',
+        'description',
+        'location',
+        'date_created'
+      ],
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['name']
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
         },
       ],
     });
@@ -36,28 +47,41 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+  res.render('newUser');
+});
+
 router.get('/animal/:id', async (req, res) => {
   try {
     const animalData = await Animal.findByPk(req.params.id, {
+      attributes: [
+        'id',
+        'name',
+        'description',
+        'location',
+        'date_created'
+      ],
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['name']
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
         },
       ],
     });
 
     const animal = animalData.get({ plain: true });
 
-    res.render('homepage', {
-      ...animal,
+    res.render('singleAnimal', {
+      animal,
       logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
 
 module.exports = router;
