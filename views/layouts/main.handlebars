@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -19,43 +18,40 @@
   </head>
 
   <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe5d0;">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Naughty By Nature</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
+        <a class="h1">Naughty By Nature</a>
+
+        <div class="navbar-collapse">
+          <ul class="navbar-nav me-auto mb-1 mb-sm-0 h3">
+            <li>
+               {{#if logged_in}}
               <a class="nav-link active" href="/dashboard">Dashboard</a>
             </li>
-            <li class="nav-item">
-              {{#if logged_in}}
-              <a class="nav-link active" href="#">Login</a>
+            <li>
               {{else}}
-              <a href="/login">login</a>
+              <a class="nav-link active" href="/login">Login</a>
               {{/if}}
             </li>
+
           </ul>
         </div>
       </div>
     </nav>
-    <main class="container container-fluid mt-5">
+    
+    <main class="container container-fluid mt-5 text-center d-flex justify-content-center" >
       <!-- Render the sub layout -->
-      {{{ body }}}
+      {{{body}}}
     </main>
+
     <footer>
-      
+
     </footer>
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+
   </body>
 </html>
