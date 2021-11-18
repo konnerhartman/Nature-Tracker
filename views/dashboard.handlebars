@@ -5,32 +5,8 @@
 </div>
 
 <div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Add A New Find:</h3>
+  <a href="/dashboard/new"><button  type="submit" class="btn btn-secondary">Add a Find!</button></a>
 
-    <form class="new-animal-form">
-      <div class="form-group">
-        <label for="animal-name">animal name:</label>
-        <input
-          class="form-input"
-          type="text"
-          id="animal-name"
-          name="animal-name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="animal-desc">description:</label>
-        <textarea
-          class="form-input"
-          id="animal-desc"
-          name="animal-desc"
-        ></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
 
   {{#if animals.length}}
     <div class="col-md-6 animal-list">
