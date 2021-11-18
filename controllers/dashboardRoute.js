@@ -38,46 +38,41 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
   
-router.get('edit/:id', withAuth, async (req, res) => {
-    try {
-      const animalData = await Animal.findByPk({
-        where: {
-          user_id: req.session.user_id
-        },
-        attributes: [
-          'id',
-          'name',
-          'description',
-          'location',
-          'date_created'
-        ],
-        include: [
-          {
+router.get('/edit/:id', withAuth, (req, res) => {
+  Animal.findOne({
+          where: {
+              id: req.params.id
+          },
+          attributes: [
+            'id',
+            'name',
+            'description',
+            'location',
+            'date_created'
+          ],
+          include: [{
             model: Category,
             attributes: ['category_name'],
           },
         ],
+      })
+      .then(animalData => {
+          if (!animalData) {
+              res.status(404).json({ message: 'No animal found with this id' });
+              return;
+          }
+
+          const animal = animalData.get({ plain: true });
+          res.render('editAnimal', { animal, loggedIn: true });
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
       });
-    
-      // Serialize data so the template can read it
-      const animals = animalData.map((animal) => animal.get({ plain: true }));
-  
-      // Pass serialized data and session flag into template
-      res.render('editAnimal', withAuth, { 
-        animals, 
-        logged_in: req.session.logged_in 
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
 });
 
 router.get('/new', (req, res) => {
   res.render('newAnimal');
-});
-
-router.get('/edit', (req, res) => {
-  res.render('editAnimal');
 });
 
 module.exports = router;
