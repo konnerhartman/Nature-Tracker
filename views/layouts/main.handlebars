@@ -19,10 +19,8 @@
   </head>
 
   <body class="text-center">
-    <main class="form-signin">
-      <form>
-        <p class="h1">Naughty By Nature</p>
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    
+      
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
@@ -32,7 +30,7 @@
         <a href="/login">login</a>
         {{/if}}
       </nav>
-    </header>
+   
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}

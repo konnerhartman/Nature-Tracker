@@ -79,6 +79,8 @@ router.post('/', (req, res) => {
     location: req.body.location,
     category_id: req.body.category_id,
     user_id: req.body.user_id
+  }).then((result)=>{
+    res.status(200).json(result)
   })
   
     .catch((err) => {
