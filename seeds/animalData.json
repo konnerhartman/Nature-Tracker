@@ -1,26 +1,26 @@
 [
     {
       "name": "Doggie",
-      "description": "",
-      "category_id": 1,
-      "location": "some place in the DFW"
+      "description": "A very nervous puppy",
+      "category_id": 2,
+      "location": "Farmers Market"
     },
     {
       "name": "Fishy",
-      "description": "",
+      "description": "Smelled pretty bad.",
+      "category_id": 4,
+      "location": "White Rock Lake"
+    },
+    {
+      "name": "Dog",
+      "description": "Big dog! Beautiful black and white fur.",
       "category_id": 2,
-      "location": "some place in the DFW"
+      "location": "Cedar Ridge Hiking Trails"
     },
     {
-      "name": "Doggie",
-      "description": "",
-      "category_id": 3,
-      "location": "some place in the DFW"
-    },
-    {
-        "name": "Fishy",
-        "description": "",
-        "category_id": 3,
-        "location": "some place in the DFW"
+        "name": "Hawk",
+        "description": "A big red tailed hawk was sitting on the power lines.",
+        "category_id": 1,
+        "location": "HWY 67"
     }
   ]
