@@ -90,7 +90,7 @@ router.post('/', withAuth, (req, res) => {
 });
 
 // update animal
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   // update animal data
   Animal.update({
     name: req.body.name,
