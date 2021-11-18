@@ -4,9 +4,9 @@ body {
 }
 
 body {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
+  /* display: flex;
+  align-items: center; */
+  /* padding-top: 40px; */
   padding-bottom: 40px;
   background-image: url("./imgs/autumn-colorful-trees-in-fall-colors-over-a-lake-free-photo-1080x1620.jpeg");
   background-size: cover;
@@ -19,14 +19,16 @@ body {
   }
 }
 .h1 {
-  font-size: 50px;
+  font-size: 30px;
   color: rgb(119, 48, 12);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  position: relative;
-  top: -35px;
+  /* position: relative; */
+  /* top: -35px; */
 }
 .h3 {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  color: rgb(119, 48, 12);
 }
 .form-signin {
   width: 100%;
