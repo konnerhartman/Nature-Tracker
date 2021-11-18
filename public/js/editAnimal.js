@@ -1,9 +1,9 @@
 async function editFormHandler(event) {
     event.preventDefault();
 
-    const name = document.querySelector('input[name="animal-name"]').value;
-    const description = document.querySelector('input[name="description"]').value;
-    const location = document.querySelector('input[name="location"]').value;
+    const name = document.querySelector('#name').value.trim();
+    const description = document.querySelector('#description').value.trim();
+    const location = document.querySelector('#location').value.trim();
 
     const id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1

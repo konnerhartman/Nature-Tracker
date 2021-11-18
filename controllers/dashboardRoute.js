@@ -63,7 +63,7 @@ router.get('edit/:id', withAuth, async (req, res) => {
       const animals = animalData.map((animal) => animal.get({ plain: true }));
   
       // Pass serialized data and session flag into template
-      res.render('editAnimal', { 
+      res.render('editAnimal', withAuth, { 
         animals, 
         logged_in: req.session.logged_in 
       });
@@ -74,6 +74,10 @@ router.get('edit/:id', withAuth, async (req, res) => {
 
 router.get('/new', (req, res) => {
   res.render('newAnimal');
+});
+
+router.get('/edit', (req, res) => {
+  res.render('editAnimal');
 });
 
 module.exports = router;
