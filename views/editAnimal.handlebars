@@ -1,14 +1,17 @@
 <div class="card">
     <h3 class="card-header">Edit Animal: {{animal.name}}</h3>
     <form class="card-body edit-animal-form">
-        <label for="animal-name" class="form-label">Name</label>
+        <label for="animal-name" class="form-label">Update Name:</label>
         <input name="animal-name" type="text" value="{{animal.name}}" class="form-input" />
-        <label class="form-label" for="description">Description</label>
+        </br>
+        <label class="form-label" for="description">Update Description:</label>
         <input name="description" type="text" value="{{animal.description}}" class="form-input" />
-        <label class="form-label" for="location">Location</label>
+        </br>
+        <label class="form-label" for="location">Update Location:</label>
         <input name="location" type="text" value="{{animal.location}}" class="form-input" />
-        <button type="submit" class="btn">Update Animal</button>
-        <a href="/dashboard"><button type="button" class="animal-list btn">Delete Animal</button></a>
+        </br>
+        <button type="submit" class="btn btn-primary">Update Animal</button>
+        <button type="click" data-id="{{animal.id}}" class="animal-list btn btn-danger">Delete Animal</button>
     </form>
 </div>
 
