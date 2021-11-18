@@ -1,6 +1,6 @@
 <div class="card">
     <h3 class="card-header">Edit Animal: {{animal.name}}</h3>
-    <form class="card-body edit-post-form">
+    <form class="card-body edit-animal-form">
         <label for="animal-name" class="form-label">Name</label>
         <input name="animal-name" type="text" value="{{animal.name}}" class="form-input" />
         <label class="form-label" for="description">Description</label>
@@ -8,7 +8,7 @@
         <label class="form-label" for="location">Location</label>
         <input name="location" type="text" value="{{animal.location}}" class="form-input" />
         <button type="submit" class="btn">Update Animal</button>
-        <button type="button" class="delete-post-btn btn">Delete Animal</button>
+        <a href="/dashboard"><button type="button" class="animal-list btn">Delete Animal</button></a>
     </form>
 </div>
 
