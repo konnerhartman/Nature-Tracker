@@ -1,6 +1,6 @@
-<div class="row">
+{{!-- <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2>Welcome, {{animal.user.name}}!</h2>
   </div>
 </div>
 
@@ -35,4 +35,20 @@
   {{/if}}
 </div>
 
-<script src="./js/deleteAnimal.js"></script>
+<script src="./js/deleteAnimal.js"></script> --}}
+
+
+
+{{#if animals.length}}
+<section>
+  <h2>Your Animals</h2>
+    {{#each animals as |animal|}}
+      {{> dashboardAI animal}}
+    {{/each}}
+
+</section>
+{{/if}}
+
+<button type="submit" class="btn"><a class="link" href="/dashboard/new">+ New Post</a></button>
+
+<script src="/js/addAnimal.js"></script>
