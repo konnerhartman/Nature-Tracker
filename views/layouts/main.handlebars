@@ -20,20 +20,27 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
-        <a class="h1">Naughty By Nature</a>
-
+        <h1 class="h1">Naughty By Nature</h1>
         <div class="navbar-collapse">
           <ul class="navbar-nav me-auto mb-1 mb-sm-0 h3">
             <li>
-               {{#if logged_in}}
+            <a class="nav-link active" href="/">Home</a>
+            </li>
+            {{#if logged_in}}
+            <li>
               <a class="nav-link active" href="/dashboard">Dashboard</a>
             </li>
             <li>
-              {{else}}
-              <a class="nav-link active" href="/login">Login</a>
-              {{/if}}
+              <a class="nav-link active" id="logout" href="/">Logout</a>
             </li>
-
+            {{else}}
+            <li>
+              <a class="nav-link active" href="/login">Login</a>
+            </li>
+            <li>
+              <a class="nav-link active" href="/signup">Sign Up</a>
+            </li>
+            {{/if}}
           </ul>
         </div>
       </div>

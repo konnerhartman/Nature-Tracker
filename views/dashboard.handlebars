@@ -1,38 +1,15 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <a href="/dashboard/new"><button  type="submit" class="btn btn-secondary">Add a Find!</button></a>
-
-
+<div class="card">
   {{#if animals.length}}
-    <div class="col-md-6">
-      <h3>Current Animals:</h3>
-
+  <section>
+    <h2>Your Animals</h2>
+    </br>
       {{#each animals as |animal|}}
-        <div class="row mb-2">
-          <div class="col-md-8">
-            <h4><a href="/animal/{{animal.id}}">{{animal.name}}</a></h4>
-          </div>
-           <div class="col-md-4 edit-post-form">
-            <a href="/dashboard/edit"><button
-              class="btn btn-sm btn-primary"
-              data-id="{{animal.id}}"
-            >EDIT</button></a>
-          </div>
-          <div class="col-md-4 animal-list">
-            <button
-              class="btn btn-sm btn-danger"
-              data-id="{{animal.id}}"
-            >DELETE</button>
-          </div>
-        </div>
+        {{> dashboardAI animal}}
       {{/each}}
-    </div>
+  </section>
   {{/if}}
+  </br>
+  <button type="submit" class="btn btn-warning"><a class="link" href="/dashboard/new">+ New Post</a></button>
 </div>
 
-<script src="./js/deleteAnimal.js"></script>
+<script src="/js/addAnimal.js"></script>
