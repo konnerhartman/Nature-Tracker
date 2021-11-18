@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Animal, User, Category } = require('../../models');
-
+const withAuth = require('../../utils/auth');
 // The `/api/animals` endpoint
 // get all animals
 router.get('/', async (req, res) => {
@@ -72,13 +72,13 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new animal
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Animal.create({
     name: req.body.name,
     description: req.body.description,
     location: req.body.location,
     category_id: req.body.category_id,
-    user_id: req.body.user_id
+    user_id: req.session.user_id
   }).then((result)=>{
     res.status(200).json(result)
   })
