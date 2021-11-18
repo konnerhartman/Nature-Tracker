@@ -1,10 +1,11 @@
-async function newFormHandler(event) {
+const newFormHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector('input[name="animal-name"]').value;
-    const description = document.querySelector('input[name="description"]').value;
-    const location = document.querySelector('input[name="location"]').value;
+    const name = document.querySelector('#name').value.trim();
+    const description = document.querySelector('#description').value.trim();
+    const location = document.querySelector('#location').value.trim();
 
+    if (name && description && location) {
     const response = await fetch(`/api/animals`, {
       method: 'POST',
       body: JSON.stringify({
@@ -20,8 +21,9 @@ async function newFormHandler(event) {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      alert('Fail to add');
     }
+   }
   };
-  
-document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
+console.log(document.querySelector('form'));
+document.querySelector('form').addEventListener('submit', newFormHandler);
