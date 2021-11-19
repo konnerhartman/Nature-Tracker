@@ -63,7 +63,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
           }
 
           const animal = animalData.get({ plain: true });
-          res.render('editAnimal', { animal, loggedIn: true });
+          res.render('editAnimal', { animal, logged_in: true });
       })
       .catch(err => {
           console.log(err);
@@ -72,7 +72,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  res.render('newAnimal');
+  res.render('newAnimal', {logged_in: true });
 });
 
 module.exports = router;
