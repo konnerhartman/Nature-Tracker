@@ -1,18 +1,18 @@
-<div class="card">
-  {{#if animals.length}}
-  <section>
-    <h2>Your Animals</h2>
-    </br>
-      {{#each animals as |animal|}}
-        {{> dashboardAI animal}}
-      {{/each}}
-  </section>
-  {{/if}}
+{{#if animals.length}}
+<section>
+  <h2>Your Animals</h2>
+  <button type="submit" class="btn btn-warning rounded-circle"><a class="btn" href="/dashboard/new">+ Add Animal</a></button>
   </br>
-  <button type="submit" class="btn btn-warning"><a class="link" href="/dashboard/new">+ New Post</a></button>
-</div>
+  {{#each animals as |animal|}}
+    {{> dashboardAI animal}}
+  {{/each}}
+</section>
+{{/if}}
+
+
 
 <script src="/js/addAnimal.js"></script>
+{{!-- 
 <div class="container d-flex justify-content-center">
   <div class="row">
     <div class="col-auto">
@@ -65,4 +65,5 @@
     {{/if}}
   </div>
 </div>
-<script src="./js/deleteAnimal.js"></script>
+
+<script src="./js/deleteAnimal.js"></script> --}}

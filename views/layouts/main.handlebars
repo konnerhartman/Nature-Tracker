@@ -18,26 +18,29 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
         <h1 class="h1">Naughty By Nature</h1>
-        <div class="navbar-collapse">
-          <ul class="navbar-nav me-auto mb-1 mb-sm-0 h3">
-            <li>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-1 mb-sm-0 h3 justify-content-end">
+            <li class="nav-item">
             <a class="nav-link active" href="/">Home</a>
             </li>
             {{#if logged_in}}
-            <li>
+            <li class="nav-item">
               <a class="nav-link active" href="/dashboard">Dashboard</a>
             </li>
-            <li>
+            <li class="nav-item">
               <a class="nav-link active" id="logout" href="/">Logout</a>
             </li>
             {{else}}
-            <li>
+            <li class="nav-item">
               <a class="nav-link active" href="/login">Login</a>
             </li>
-            <li>
+            <li class="nav-item">
               <a class="nav-link active" href="/signup">Sign Up</a>
             </li>
             {{/if}}
