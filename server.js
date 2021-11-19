@@ -13,9 +13,9 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 
 // only run in development
-if(process.env.NODE_ENV === 'development'){
-  app.use(morgan('dev'));
-}
+// if(process.env.NODE_ENV === 'development'){
+//   app.use(morgan('dev'));
+// }
 
 const PORT = process.env.PORT || 3001;
 
