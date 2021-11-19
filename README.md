@@ -7,6 +7,7 @@
   # Table of Contents
 
   - [Installation](#installation)
+  - [Links](#links)
   - [Usage](#usage)
   - [Credits](#credits)
   - [License](#license)
@@ -20,6 +21,17 @@
   1.  Once cloned, navigate to the directory/folder and checkout the package.json file for needed libraries to install, as there's a slew that marry with Express, Handlebars, MySQL, Sequelize, Bulma to bring the application to life for an observatory experience.
   1.  From that directory, after all dependencies have been installed, start the server via your terminal and navigate to http://localhost:3001/ via your browser.
   1. The application can be ran by clicking the application's Heroku link, .
+
+  ## Links
+  Heroku: 
+  </br>
+  https://naughty-by-nature.herokuapp.com/
+  </br>
+  </br>
+  Repo:
+  </br>
+  https://github.com/konnerhartman/Nature-Tracker
+
 
   ## Usage  
   The Nature (Observation) Tracker can be accessed via a web brower on a computer or hand-held device, the application is responsive as seen in the images.  Initially, you will be taken to the nature tracker's landing page whereby you will be able to view all logged animal observations by users of your application.  In order to log any animal observations, a user must signup to create a new user account or log into their existing account.  Once logged in, the user will be taken to their dashboard whereby they will be able to create new animal observations, edit or delete an existing animal observation of thier choosing.  The application is open to a wide variety of animal observations as the user can enter a name (nickname) of the observed animal, a desciption of the animal and a location of the observation.  From the landing page or homepage, the listing of the animal observations will include the name of the observer, date observed and the location of the observation entered as well as the name of the animal.
@@ -59,6 +71,7 @@
   > - konnerhartman https://github.com/konnerhartman
   > - corbinball https://github.com/corbinball
   > - RavingisASport https://github.com/RavingisASport
-  > - wmsimien https://github.com/wmsimien                                                                                                
+  > - wmsimien https://github.com/wmsimien       
+
   ## Test
   Testing of this application is a success when you are able to complete the installation steps and enjoy the application as described.
