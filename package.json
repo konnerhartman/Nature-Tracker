@@ -4,10 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server.js",
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "seed": "node seeds/index.js"
+    "seed": "node seeds/seed.js"
   },
   "repository": {
     "type": "git",
@@ -38,7 +37,6 @@
     "cross-env": "^7.0.3",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
-    "morgan": "^1.10.0",
     "nodemon": "^2.0.14",
     "prettier": "^2.1.2"
   }

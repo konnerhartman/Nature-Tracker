@@ -5,7 +5,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const morgan = require('morgan');
 const methodOverride = require('method-override');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -13,9 +12,9 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 
 // only run in development
-if(process.env.NODE_ENV === 'development'){
-  app.use(morgan('dev'));
-}
+// if(process.env.NODE_ENV === 'development'){
+//   app.use(morgan('dev'));
+// }
 
 const PORT = process.env.PORT || 3001;
 
@@ -51,6 +50,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening and Server running
-  in ${process.env.NODE_ENV} on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Now listening and Server running on port ${PORT}`));
 });
