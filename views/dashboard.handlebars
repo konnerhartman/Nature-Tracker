@@ -1,7 +1,7 @@
-{{#if animals.length}}
 <section>
   <h2>Your Animals</h2>
   <button type="submit" class="btn btn-warning rounded-circle"><a class="btn" href="/dashboard/new">+ Add Animal</a></button>
+  {{#if animals.length}}
   </br>
   {{#each animals as |animal|}}
     {{> dashboardAI animal}}
